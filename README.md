@@ -1,4 +1,4 @@
-# Happy Birthday, Sofy 🎈
+# Happy Birthday,
 
 A handmade, fully static digital birthday card.
 
