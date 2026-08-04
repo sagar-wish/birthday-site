@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, Sofy — A Little Surprise Made For You</title>
+<meta name="description" content="A handmade digital birthday card for Sofy: letters, memories, chat moments, music and a wish to blow out." />
+
+<meta property="og:title" content="A Small Surprise ❤️" />
+<meta property="og:description" content="Open this when you're ready." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://dhakalsagar.info.np/birthday/hellchair.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="locked">
+
+<!-- ============ Welcome overlay ============ -->
+<div id="welcome" role="dialog" aria-modal="true" aria-label="Welcome">
+  <span class="popper left" aria-hidden="true">🎉</span>
+  <span class="popper right" aria-hidden="true">🎉</span>
+  <div class="welcome-stack">
+    <div class="welcome-gift" aria-hidden="true">🎁</div>
+    <p class="welcome-line w-seq font-anime" data-step="1">Psst… someone made something for you.</p>
+    <p class="welcome-line w-seq font-anime" data-step="2">No, really. Only for you.</p>
+    <p class="welcome-line w-seq big font-anime" data-step="3">And it's a little bit special ✨</p>
+    <p class="welcome-hint w-seq" data-step="4">Best with sound on 🎵</p>
+    <button id="open-btn" class="btn" type="button">Open Your Surprise</button>
+  </div>
+</div>
+
+<!-- ============ Trick quiz layer ============ -->
+<div id="quiz" role="dialog" aria-modal="true" aria-label="One tiny question" aria-hidden="true">
+  <div class="welcome-stack quiz-card">
+    <div class="quiz-emoji" aria-hidden="true">🤔</div>
+    <p class="w2-small">security check (very serious)</p>
+    <p class="welcome-line big font-anime">Quick question before you enter…</p>
+    <p class="quiz-q">What's heavier?</p>
+    <div class="quiz-options">
+      <button class="btn ghost quiz-opt" type="button">☁️ One kilogram of feathers</button>
+      <button class="btn ghost quiz-opt" type="button">🪨 One kilogram of rocks</button>
+    </div>
+    <p class="welcome-hint">(choose wisely, there's no going back)</p>
+  </div>
+</div>
+
+<!-- ============ Punishment layer ============ -->
+<div id="punish" role="dialog" aria-modal="true" aria-label="Punishment" aria-hidden="true">
+  <div class="welcome-stack punish-card">
+    <div class="punish-emoji" aria-hidden="true">🚨</div>
+    <p class="w2-small">wrong answer detected</p>
+    <p class="welcome-line big font-anime">Ohh nooo… that was the wrong one 😌</p>
+    <p class="punish-line">The page is locked now. And yes — there's a punishment.</p>
+    <div class="runaway-zone" id="runaway-zone">
+      <button id="runaway-btn" class="btn" type="button">Reveal punishment</button>
+    </div>
+    <p class="welcome-hint">psst — on phone, just tap it. it's kinder there.</p>
+  </div>
+</div>
+
+<!-- ============ Second layer: the keepsake ============ -->
+<div id="welcome2" role="dialog" aria-modal="true" aria-label="One more thing" aria-hidden="true">
+  <div class="welcome-stack">
+    <div class="w2-ribbon" aria-hidden="true">🎀</div>
+    <p class="w2-small">holdup holdup holdup…</p>
+    <p class="welcome-line big font-anime">don't you have to say thank you to the person who made this??</p>
+    <p class="welcome-line font-anime w2-tease">i am angry nowww 😤</p>
+    <p class="welcome-hint">I'll wait… take your time. I'll pretend to be patient. 🙂</p>
+    <button id="open-btn-2" class="btn" type="button">Okay, show me 🎈</button>
+  </div>
+</div>
+
+
+<canvas id="sakura-canvas" aria-hidden="true"></canvas>
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+<!-- ============ Hero ============ -->
+<header class="hero" id="hero">
+  <img class="hero-bg" src="img/hero.jpg" alt="Cherry blossoms over a pastel sunset sky" width="1920" height="1088" />
+  <div class="balloons hero-balloons" id="hero-balloons" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <h1 class="font-anime">Happy Birthday, Sofy!</h1>
+    <p class="tag">Here's to laughter, late-night chats, and another amazing year ahead.</p>
+    <div class="counter" id="countdown" role="timer" aria-live="off" aria-label="Time since you were born"></div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">scroll</div>
+</header>
+
+
+<main>
+
+<!-- ============ Letter ============ -->
+<section class="section" id="letter" aria-labelledby="letter-h">
+  <div class="wrap center">
+    <span class="eyebrow reveal">A letter</span>
+    <h2 class="section-title reveal" id="letter-h">A Special Message For You</h2>
+    <article class="letter" id="letter-card">
+      <p>Hey Sofy,</p>
+      <p>Wishing you a very Happy Birthday! May all your wishes be fulfilled, may your days be filled with happiness, and may your dreams slowly turn into reality (only good ones ni).</p>
+      <p>May your biscuit never fall into your tea.<br />May you always remember your umbrella on the one day it actually rains.<br />May your iPhone battery survive every day.</p>
+      <p>Also, thank you for being "Colleen Hoover" of my "Kafkaesque world". A part of me will always be grateful.</p>
+      <p>Have the best birthday, eat lots of cake, collect questionable amounts of birthday photos, and have an amazing year ahead. 🥳🎂</p>
+      <p class="sign">Yours,</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ Timeline ============ -->
+<section class="section" aria-labelledby="tl-h">
+  <div class="wrap center">
+    <h2 class="section-title reveal" id="tl-h">Our Story Arc</h2>
+    <div class="timeline" id="timeline">
+      <div class="line" aria-hidden="true"></div>
+
+      <div class="t-item reveal">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="t-card glass lift">
+          <div class="icon" aria-hidden="true">🌧️</div>
+          <p class="when">May 9th · 10:34 PM</p>
+          <h3>Our First Conversation</h3>
+          <p>In a specific time, few binary numbers coincided together to match my conversation with you in Chitchat. Had I slept instead of waking up?</p>
+        </article>
+      </div>
+
+      <div class="t-item reveal">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="t-card glass lift">
+          <div class="icon" aria-hidden="true">🌙</div>
+          <p class="when">May 10th · 7:53 AM</p>
+          <h3>The Name Sake</h3>
+          <p>I guessed your name as Kavya, before you revealed yours. Remember? Also, you always wanted to skip sleep. You dreamed of talking and talking until the sun rises. Oh! those nights..</p>
+        </article>
+      </div>
+
+      <div class="t-item reveal">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="t-card glass lift">
+          <div class="icon" aria-hidden="true">🫶</div>
+          <p class="when">May 7 – May 17</p>
+          <h3>Life Could Be a Dream</h3>
+          <p>The se7en days were the best experience of my life. If I would be live again, I would definitely experience it again.</p>
+        </article>
+      </div>
+
+      <div class="t-item reveal">
+        <span class="dot" aria-hidden="true"></span>
+        <article class="t-card glass lift">
+          <div class="icon" aria-hidden="true">🎂</div>
+          <p class="when">Present</p>
+          <h3>This Page</h3>
+          <p>Oh! how I still love discussing books, listening to stories, criticizing each other's habits, and also discussing philo<u>sophy</u>.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ Chat moments ============ -->
+<section class="section" aria-labelledby="chat-h">
+  <div class="wrap center">
+    <h2 class="section-title reveal" id="chat-h">Little Chats, Little Memory</h2>
+    <div class="shot-slot glass reveal">
+      <img id="shot-img" src="img/screenshot.png" alt="A saved chat screenshot" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('empty')" />
+      <p class="shot-hint">Drop your screenshot at <code>img/screenshot.png</code> to show it here.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ============ Quotes ============ -->
+<section class="section" aria-labelledby="q-h">
+  <div class="wrap center">
+    <h2 class="section-title reveal" id="q-h">Favourite Quotes</h2>
+    <div class="quote-box glass reveal" id="quote-box">
+      <p id="quote-text" aria-live="polite">…</p>
+      <p id="quote-author"></p>
+      <button class="btn ghost" id="next-quote" type="button">Next Quote ✨</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Music ============ -->
+<section class="section" aria-labelledby="mu-h">
+  <div class="wrap center">
+    <span class="eyebrow reveal">Press play</span>
+    <h2 class="section-title reveal" id="mu-h">A Song For Today</h2>
+    <p class="section-sub reveal">Add your own <code>music.mp3</code> next to <code>index.html</code> to replace this track.</p>
+    <div class="music glass reveal" id="music-card">
+      <div class="art" aria-hidden="true">🎵</div>
+      <div>
+        <h3>Your Birthday Theme</h3>
+        <p>For Sofy · on repeat since 2006</p>
+        <button class="btn" id="music-btn" type="button" aria-pressed="false">▶ Play</button>
+      </div>
+    </div>
+    <audio id="bg-music" src="music.mp3" loop preload="none"></audio>
+  </div>
+</section>
+
+
+<!-- ============ Cake ============ -->
+<section class="section" aria-labelledby="cake-h">
+  <div class="wrap center">
+    <span class="eyebrow reveal">Your turn</span>
+    <h2 class="section-title reveal" id="cake-h">Make A Wish</h2>
+    <p class="section-sub reveal">Tap the candles.</p>
+    <div class="cake-stage">
+      <button class="cake" id="cake" type="button" aria-label="Blow out the birthday candles">
+        <svg viewBox="0 0 260 210" role="img" aria-hidden="true">
+          <g class="candle">
+            <g class="flame"><ellipse cx="90" cy="44" rx="7" ry="12" fill="#ffcf70"/><ellipse cx="90" cy="47" rx="3.4" ry="6.5" fill="#fff1c2"/></g>
+            <g class="flame"><ellipse cx="130" cy="36" rx="7" ry="12" fill="#ffcf70"/><ellipse cx="130" cy="39" rx="3.4" ry="6.5" fill="#fff1c2"/></g>
+            <g class="flame"><ellipse cx="170" cy="44" rx="7" ry="12" fill="#ffcf70"/><ellipse cx="170" cy="47" rx="3.4" ry="6.5" fill="#fff1c2"/></g>
+            <rect x="85" y="58" width="10" height="34" rx="5" fill="#cdb4f6"/>
+            <rect x="125" y="50" width="10" height="42" rx="5" fill="#ffb7c5"/>
+            <rect x="165" y="58" width="10" height="34" rx="5" fill="#a9d6f5"/>
+          </g>
+          <rect x="46" y="90" width="168" height="34" rx="17" fill="#fff" stroke="#f6dfe8"/>
+          <rect x="38" y="118" width="184" height="42" rx="20" fill="#ffe3ec"/>
+          <rect x="30" y="152" width="200" height="44" rx="22" fill="#e9dcff"/>
+          <circle cx="70" cy="139" r="4" fill="#e8c88a"/><circle cx="110" cy="133" r="4" fill="#a9d6f5"/>
+          <circle cx="150" cy="141" r="4" fill="#f48fb1"/><circle cx="190" cy="135" r="4" fill="#cdb4f6"/>
+        </svg>
+      </button>
+      <p id="wish-msg" class="glass" style="padding:18px 24px">🎉 Wish submitted successfully. Processing…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Finale ============ -->
+<section class="section finale" id="finale" aria-labelledby="fin-h">
+  <div class="balloons" id="balloons" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="section-title" id="fin-h">Thank you for being part of my life ❤️</h2>
+    <p class="section-sub reveal">May your books be unputdownable, your snacks never run out, and your year be full of pleasant surprises. Happy Birthday!</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Made with far too much care, and a little bit of code.</p>
+  <p style="opacity:.7">Hope you liked it...</p>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
